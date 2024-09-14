@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b31e3tdnj8ifp"]
+
+[ext_resource type="Texture2D" uid="uid://g1gugkpq282p" path="res://Assets/Sprites/droneDiffuse.png" id="1_tp4es"]
+[ext_resource type="Texture2D" uid="uid://q4u86ujxtnhs" path="res://Assets/Sprites/droneNormal.png" id="2_kvqc8"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qio1b"]
+diffuse_texture = ExtResource("1_tp4es")
+normal_texture = ExtResource("2_kvqc8")
+
+[sub_resource type="Gradient" id="Gradient_3byph"]
+offsets = PackedFloat32Array(0, 0.753247)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_peu5e"]
+gradient = SubResource("Gradient_3byph")
+fill = 1
+fill_from = Vector2(0.495413, 0.5)
+
+[node name="Overworld" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(57, 58)
+texture = SubResource("CanvasTexture_qio1b")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(75, 77)
+scale = Vector2(1.96875, 1.70312)
+color = Color(0.879612, 0.770006, 0.551899, 1)
+energy = 3.44
+texture = SubResource("GradientTexture2D_peu5e")
