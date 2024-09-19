@@ -1,30 +1,128 @@
-[gd_scene load_steps=6 format=3 uid="uid://b31e3tdnj8ifp"]
+[gd_scene load_steps=17 format=3 uid="uid://b31e3tdnj8ifp"]
 
-[ext_resource type="Texture2D" uid="uid://g1gugkpq282p" path="res://Assets/Sprites/droneDiffuse.png" id="1_tp4es"]
-[ext_resource type="Texture2D" uid="uid://q4u86ujxtnhs" path="res://Assets/Sprites/droneNormal.png" id="2_kvqc8"]
+[ext_resource type="Texture2D" uid="uid://cfnk5a5pjystg" path="res://Assets/Sprites/robot-idle-Sheet.png" id="1_84fqq"]
+[ext_resource type="Script" path="res://Scripts/Player/playerCore.gd" id="1_l5jyn"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_qio1b"]
-diffuse_texture = ExtResource("1_tp4es")
-normal_texture = ExtResource("2_kvqc8")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_back7"]
+radius = 16.0
+height = 96.0
 
-[sub_resource type="Gradient" id="Gradient_3byph"]
-offsets = PackedFloat32Array(0, 0.753247)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_im70l"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(0, 0, 64, 96)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_peu5e"]
-gradient = SubResource("Gradient_3byph")
-fill = 1
-fill_from = Vector2(0.495413, 0.5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q14g"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm6v5"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tauqr"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjv8f"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(256, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2jq2"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(320, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n1wk"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(384, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am7sc"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(448, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ies0b"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(512, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ua4"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(576, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22rvx"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(640, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlffm"]
+atlas = ExtResource("1_84fqq")
+region = Rect2(704, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s88yg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im70l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q14g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm6v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tauqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjv8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2jq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n1wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am7sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ies0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ua4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22rvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlffm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
 
 [node name="Overworld" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(57, 58)
-texture = SubResource("CanvasTexture_qio1b")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(2, 2)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(75, 77)
-scale = Vector2(1.96875, 1.70312)
-color = Color(0.879612, 0.770006, 0.551899, 1)
-energy = 3.44
-texture = SubResource("GradientTexture2D_peu5e")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 112, 208, 112, 208, 40, 192, 40, 176, 80, 160, 96, 112, 104, 48, 104, 48, 80, 16, 80, 16, 40, -8, 40, -8, 112)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-8, 40, -8, 112, 208, 112, 208, 40, 192, 40, 176, 80, 160, 96, 112, 104, 48, 104, 48, 80, 16, 80, 16, 40)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(192, 160)
+floor_snap_length = 5.9
+script = ExtResource("1_l5jyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_back7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_s88yg")
+animation = &"idle"
+frame_progress = 0.66586
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -8)
+zoom = Vector2(1.25, 1.25)
