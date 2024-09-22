@@ -1,10 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://b31e3tdnj8ifp"]
+[gd_scene load_steps=38 format=3 uid="uid://b31e3tdnj8ifp"]
 
 [ext_resource type="Texture2D" uid="uid://cfnk5a5pjystg" path="res://Assets/Sprites/robot-idle-Sheet.png" id="1_84fqq"]
 [ext_resource type="Script" path="res://Scripts/Player/playerCore.gd" id="1_l5jyn"]
 [ext_resource type="Script" path="res://Scripts/Hit+Hurt Boxes/mainHitbox.gd" id="3_4ovt2"]
 [ext_resource type="Script" path="res://Scripts/Hit+Hurt Boxes/mainHurtbox.gd" id="4_u6woc"]
 [ext_resource type="Texture2D" uid="uid://c83vg7mahe0xe" path="res://Assets/Sprites/sword-slash-Sheet.png" id="5_brc8y"]
+[ext_resource type="Script" path="res://Scripts/Utility/debugdrone.gd" id="6_g4y17"]
+[ext_resource type="Texture2D" uid="uid://g1gugkpq282p" path="res://Assets/Sprites/droneDiffuse.png" id="7_5kytf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_back7"]
 radius = 16.0
@@ -18,7 +20,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/WeaponSprite:animation")
+tracks/0/path = NodePath("WeaponSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/WeaponSprite:frame")
+tracks/1/path = NodePath("WeaponSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -42,7 +44,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/Hitbox/CollisionShape2D:shape")
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -54,7 +56,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Hitbox:position")
+tracks/3/path = NodePath("Hitbox:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -66,7 +68,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D/Hitbox:rotation")
+tracks/4/path = NodePath("Hitbox:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -83,7 +85,7 @@ step = 0.0333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/WeaponSprite:animation")
+tracks/0/path = NodePath("WeaponSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/WeaponSprite:frame")
+tracks/1/path = NodePath("WeaponSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -107,7 +109,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/Hitbox/CollisionShape2D:shape")
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:shape")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -119,7 +121,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Hitbox:position")
+tracks/3/path = NodePath("Hitbox:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -131,7 +133,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D/Hitbox:rotation")
+tracks/4/path = NodePath("Hitbox:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -240,6 +242,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5vd6"]
+size = Vector2(20, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpt63"]
 atlas = ExtResource("5_brc8y")
@@ -303,6 +306,14 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0lch"]
+radius = 16.45
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w35fv"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwvme"]
+
 [node name="Overworld" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -331,28 +342,53 @@ libraries = {
 "": SubResource("AnimationLibrary_vgaa2")
 }
 
-[node name="Node2D" type="Node2D" parent="Player"]
-
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player/Node2D"]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_s88yg")
 animation = &"idle"
 frame_progress = 0.66586
 
-[node name="Hitbox" type="Area2D" parent="Player/Node2D"]
-script = ExtResource("3_4ovt2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Node2D/Hitbox"]
-shape = SubResource("RectangleShape2D_8mkco")
-
-[node name="Hurtbox" type="Area2D" parent="Player/Node2D"]
+[node name="Hurtbox" type="Area2D" parent="Player"]
 script = ExtResource("4_u6woc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Node2D/Hurtbox"]
-position = Vector2(-192, -160)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox"]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_f5vd6")
 
-[node name="WeaponSprite" type="AnimatedSprite2D" parent="Player/Node2D"]
+[node name="Hitbox" type="Area2D" parent="Player"]
+script = ExtResource("3_4ovt2")
+damage = [5, 10]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
+shape = SubResource("RectangleShape2D_8mkco")
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-32, 0)
 sprite_frames = SubResource("SpriteFrames_is2we")
 animation = &"lightsaber_swing"
 flip_h = true
+
+[node name="Node2D" type="Node2D" parent="Player"]
+
+[node name="Drone" type="CharacterBody2D" parent="."]
+position = Vector2(324, 64)
+script = ExtResource("6_g4y17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone"]
+shape = SubResource("CircleShape2D_t0lch")
+
+[node name="Sprite2D" type="Sprite2D" parent="Drone"]
+texture = ExtResource("7_5kytf")
+
+[node name="Hurtbox" type="Area2D" parent="Drone"]
+script = ExtResource("4_u6woc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Hurtbox"]
+shape = SubResource("CircleShape2D_w35fv")
+
+[node name="Hitbox" type="Area2D" parent="Drone"]
+script = ExtResource("3_4ovt2")
+damage = [10, 15]
+criticalChance = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Hitbox"]
+shape = SubResource("CircleShape2D_kwvme")

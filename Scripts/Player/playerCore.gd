@@ -38,11 +38,11 @@ func _physics_process(delta):
 	#Manually changes the direction the character fac	es with inputs
 	if Input.is_action_just_pressed("moveLeft"):
 		print("test1")
-		$Node2D.scale.x = 1.0
+		transform.x.x = abs(transform.x.x)
 	elif Input.is_action_just_pressed("moveRight"):
-		print("test2")
-		$Node2D.scale.x = -1.0
-		print(transform)
+		#print("test2")
+		transform.x.x = abs(transform.x.x)*-1.0
+		#print(transform)
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	if direction:

@@ -5,8 +5,8 @@ extends Area2D
 @onready var damageNumber = preload("res://Scenes/Utility Instanced Scenes/damage_number.tscn")
 
 func _ready():
-	collision_layer = 0
-	collision_mask = 2
+	collision_layer = 2
+	collision_mask = 0
 
 
 #var timer = 0.0

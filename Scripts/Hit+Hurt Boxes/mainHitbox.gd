@@ -9,8 +9,8 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("area_entered",_on_hurtbox_enter)
-	collision_layer = 2
-	collision_mask = 0
+	collision_layer = 0
+	collision_mask = 2
 
 #Function to calculate damage and crit
 func calculateDamage() -> Array:
@@ -30,10 +30,12 @@ func calculateDamage() -> Array:
 	return [currentDamage,crit]
 
 func _on_hurtbox_enter(hurtbox: Hurtbox):
+	print("hurtbox entered")
 	#If the hurtbox belongs to the same node as the hitbox, ignore the collision.
 	if hurtbox.get_parent() == get_parent():
 		return
 	#Safety Method Check
+	
 	if hurtbox.has_method("hitboxInteraction"):
 		#Calculates damage and sends it to the hurtbox in order to damage the entity
 		hurtbox.hitboxInteraction(calculateDamage())
