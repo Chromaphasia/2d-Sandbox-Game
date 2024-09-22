@@ -1,8 +1,0 @@
-[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://crb5mdk0ejdqc"]
-
-[ext_resource type="Texture2D" uid="uid://dwungiaq2xboe" path="res://Assets/Sprites/Weapons/Melee/Sabre/Diffuse/frame.6.png" id="1_x2two"]
-[ext_resource type="Texture2D" uid="uid://b28v404cd41c7" path="res://Assets/Sprites/Weapons/Melee/Sabre/Normals/frame6.png" id="2_i6baq"]
-
-[resource]
-diffuse_texture = ExtResource("1_x2two")
-normal_texture = ExtResource("2_i6baq")

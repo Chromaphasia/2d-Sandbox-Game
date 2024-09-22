@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw58sh40yx1dn"
-path="res://.godot/imported/frame.3.png-d24acc3bb543a6a970d039b06f55fc32.ctex"
+uid="uid://vtetmuihwxy3"
+path="res://.godot/imported/sabre-normals.png-f873f8c06a78de630fd48cf36aba74ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Weapons/Melee/Sabre/Diffuse/frame.3.png"
-dest_files=["res://.godot/imported/frame.3.png-d24acc3bb543a6a970d039b06f55fc32.ctex"]
+source_file="res://Assets/Sprites/Weapons/Melee/Sabre/sabre-normals.png"
+dest_files=["res://.godot/imported/sabre-normals.png-f873f8c06a78de630fd48cf36aba74ca.ctex"]
 
 [params]
 

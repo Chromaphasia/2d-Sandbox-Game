@@ -1,19 +1,15 @@
-[gd_scene load_steps=42 format=3 uid="uid://b31e3tdnj8ifp"]
+[gd_scene load_steps=45 format=3 uid="uid://b31e3tdnj8ifp"]
 
 [ext_resource type="Texture2D" uid="uid://cfnk5a5pjystg" path="res://Assets/Sprites/robot-idle-Sheet.png" id="1_84fqq"]
 [ext_resource type="Script" path="res://Scripts/Player/playerCore.gd" id="1_l5jyn"]
 [ext_resource type="Script" path="res://Scripts/Hit+Hurt Boxes/mainHitbox.gd" id="3_4ovt2"]
 [ext_resource type="Script" path="res://Scripts/Hit+Hurt Boxes/mainHurtbox.gd" id="4_u6woc"]
 [ext_resource type="Shader" uid="uid://dcj8l0ttcerqh" path="res://Assets/Shaders/SpriteGlow.res" id="5_fie7w"]
-[ext_resource type="Texture2D" uid="uid://crb5mdk0ejdqc" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame5.tres" id="5_jdtpw"]
 [ext_resource type="Script" path="res://Scripts/Utility/debugdrone.gd" id="6_g4y17"]
 [ext_resource type="Texture2D" uid="uid://b3wom0jdyljic" path="res://Assets/Sprites/Weapons/Melee/Sabre/sabre-glows.png" id="6_hojuj"]
-[ext_resource type="Texture2D" uid="uid://de868bmgygfjk" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame0.tres" id="6_wuol7"]
-[ext_resource type="Texture2D" uid="uid://dgtqucb1inq6j" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame1.tres" id="7_4yimc"]
 [ext_resource type="Texture2D" uid="uid://g1gugkpq282p" path="res://Assets/Sprites/droneDiffuse.png" id="7_5kytf"]
-[ext_resource type="Texture2D" uid="uid://cxhba1sy75067" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame2.tres" id="8_5q202"]
-[ext_resource type="Texture2D" uid="uid://df7mob5fnyrwc" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame3.tres" id="9_mmgcx"]
-[ext_resource type="Texture2D" uid="uid://bni37a5gsaans" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame4.tres" id="10_7uvpl"]
+[ext_resource type="Texture2D" uid="uid://vtetmuihwxy3" path="res://Assets/Sprites/Weapons/Melee/Sabre/sabre-normals.png" id="7_uxffi"]
+[ext_resource type="Texture2D" uid="uid://8nakfgjs3gbe" path="res://Assets/Sprites/Weapons/Melee/Sabre/sabre-diffuse.png" id="8_koj8h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_back7"]
 radius = 16.0
@@ -251,17 +247,46 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5vd6"]
 size = Vector2(20, 88)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1l4e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g05he"]
 shader = ExtResource("5_fie7w")
-shader_parameter/Mask_Threshold = 0.2
-shader_parameter/Glow_Color = Vector3(0, 0, 0)
+shader_parameter/GlowColor = Color(0.856494, 4e-06, 1e-06, 1)
+shader_parameter/Glow_Intensity = 0.0
 shader_parameter/Glow_Mask = ExtResource("6_hojuj")
+shader_parameter/NormalMap = ExtResource("7_uxffi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o0t2"]
+atlas = ExtResource("8_koj8h")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrkiq"]
+atlas = ExtResource("8_koj8h")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b458a"]
+atlas = ExtResource("8_koj8h")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0ld5"]
+atlas = ExtResource("8_koj8h")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj8jj"]
+atlas = ExtResource("8_koj8h")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvxf5"]
+atlas = ExtResource("8_koj8h")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7j6k"]
+atlas = ExtResource("8_koj8h")
+region = Rect2(480, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_is2we"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_jdtpw")
+"texture": SubResource("AtlasTexture_4o0t2")
 }],
 "loop": true,
 "name": &"lightsaber_idle",
@@ -269,22 +294,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_wuol7")
+"texture": SubResource("AtlasTexture_nrkiq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_4yimc")
+"texture": SubResource("AtlasTexture_b458a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_5q202")
+"texture": SubResource("AtlasTexture_b0ld5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_mmgcx")
+"texture": SubResource("AtlasTexture_oj8jj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_7uvpl")
+"texture": SubResource("AtlasTexture_hvxf5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_jdtpw")
+"texture": SubResource("AtlasTexture_p7j6k")
 }],
 "loop": true,
 "name": &"lightsaber_swing",
@@ -309,6 +334,7 @@ fill = 1
 fill_from = Vector2(0.513761, 0.477064)
 
 [sub_resource type="Environment" id="Environment_ce1c1"]
+background_mode = 3
 glow_enabled = true
 glow_blend_mode = 0
 
@@ -360,16 +386,17 @@ damage = [5, 10]
 shape = SubResource("RectangleShape2D_8mkco")
 
 [node name="WeaponSprite" type="AnimatedSprite2D" parent="Player"]
-material = SubResource("ShaderMaterial_b1l4e")
+z_index = 1
+material = SubResource("ShaderMaterial_g05he")
 position = Vector2(-32, 0)
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_is2we")
 animation = &"lightsaber_swing"
-flip_h = true
 
 [node name="Node2D" type="Node2D" parent="Player"]
 
 [node name="Drone" type="CharacterBody2D" parent="."]
-position = Vector2(324, 64)
+position = Vector2(235, 170)
 script = ExtResource("6_g4y17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drone"]
