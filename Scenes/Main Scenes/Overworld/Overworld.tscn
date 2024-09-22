@@ -1,12 +1,19 @@
-[gd_scene load_steps=38 format=3 uid="uid://b31e3tdnj8ifp"]
+[gd_scene load_steps=42 format=3 uid="uid://b31e3tdnj8ifp"]
 
 [ext_resource type="Texture2D" uid="uid://cfnk5a5pjystg" path="res://Assets/Sprites/robot-idle-Sheet.png" id="1_84fqq"]
 [ext_resource type="Script" path="res://Scripts/Player/playerCore.gd" id="1_l5jyn"]
 [ext_resource type="Script" path="res://Scripts/Hit+Hurt Boxes/mainHitbox.gd" id="3_4ovt2"]
 [ext_resource type="Script" path="res://Scripts/Hit+Hurt Boxes/mainHurtbox.gd" id="4_u6woc"]
-[ext_resource type="Texture2D" uid="uid://c83vg7mahe0xe" path="res://Assets/Sprites/sword-slash-Sheet.png" id="5_brc8y"]
+[ext_resource type="Shader" uid="uid://dcj8l0ttcerqh" path="res://Assets/Shaders/SpriteGlow.res" id="5_fie7w"]
+[ext_resource type="Texture2D" uid="uid://crb5mdk0ejdqc" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame5.tres" id="5_jdtpw"]
 [ext_resource type="Script" path="res://Scripts/Utility/debugdrone.gd" id="6_g4y17"]
+[ext_resource type="Texture2D" uid="uid://b3wom0jdyljic" path="res://Assets/Sprites/Weapons/Melee/Sabre/sabre-glows.png" id="6_hojuj"]
+[ext_resource type="Texture2D" uid="uid://de868bmgygfjk" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame0.tres" id="6_wuol7"]
+[ext_resource type="Texture2D" uid="uid://dgtqucb1inq6j" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame1.tres" id="7_4yimc"]
 [ext_resource type="Texture2D" uid="uid://g1gugkpq282p" path="res://Assets/Sprites/droneDiffuse.png" id="7_5kytf"]
+[ext_resource type="Texture2D" uid="uid://cxhba1sy75067" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame2.tres" id="8_5q202"]
+[ext_resource type="Texture2D" uid="uid://df7mob5fnyrwc" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame3.tres" id="9_mmgcx"]
+[ext_resource type="Texture2D" uid="uid://bni37a5gsaans" path="res://Assets/Sprites/Weapons/Melee/Sabre/Animation Canvas Textures/frame4.tres" id="10_7uvpl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_back7"]
 radius = 16.0
@@ -244,39 +251,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5vd6"]
 size = Vector2(20, 88)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hpt63"]
-atlas = ExtResource("5_brc8y")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6epl"]
-atlas = ExtResource("5_brc8y")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir7i2"]
-atlas = ExtResource("5_brc8y")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cep2p"]
-atlas = ExtResource("5_brc8y")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_inu8v"]
-atlas = ExtResource("5_brc8y")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmlqg"]
-atlas = ExtResource("5_brc8y")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjxi5"]
-atlas = ExtResource("5_brc8y")
-region = Rect2(480, 0, 96, 96)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1l4e"]
+shader = ExtResource("5_fie7w")
+shader_parameter/Mask_Threshold = 0.2
+shader_parameter/Glow_Color = Vector3(0, 0, 0)
+shader_parameter/Glow_Mask = ExtResource("6_hojuj")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_is2we"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hpt63")
+"texture": ExtResource("5_jdtpw")
 }],
 "loop": true,
 "name": &"lightsaber_idle",
@@ -284,22 +269,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v6epl")
+"texture": ExtResource("6_wuol7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ir7i2")
+"texture": ExtResource("7_4yimc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cep2p")
+"texture": ExtResource("8_5q202")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_inu8v")
+"texture": ExtResource("9_mmgcx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xmlqg")
+"texture": ExtResource("10_7uvpl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fjxi5")
+"texture": ExtResource("5_jdtpw")
 }],
 "loop": true,
 "name": &"lightsaber_swing",
@@ -313,6 +298,19 @@ radius = 16.45
 radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwvme"]
+
+[sub_resource type="Gradient" id="Gradient_bumb0"]
+offsets = PackedFloat32Array(0, 0.746753)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ckju"]
+gradient = SubResource("Gradient_bumb0")
+fill = 1
+fill_from = Vector2(0.513761, 0.477064)
+
+[sub_resource type="Environment" id="Environment_ce1c1"]
+glow_enabled = true
+glow_blend_mode = 0
 
 [node name="Overworld" type="Node2D"]
 
@@ -335,7 +333,7 @@ shape = SubResource("CapsuleShape2D_back7")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
-zoom = Vector2(1.75, 1.75)
+zoom = Vector2(4, 4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
@@ -362,6 +360,7 @@ damage = [5, 10]
 shape = SubResource("RectangleShape2D_8mkco")
 
 [node name="WeaponSprite" type="AnimatedSprite2D" parent="Player"]
+material = SubResource("ShaderMaterial_b1l4e")
 position = Vector2(-32, 0)
 sprite_frames = SubResource("SpriteFrames_is2we")
 animation = &"lightsaber_swing"
@@ -392,3 +391,12 @@ criticalChance = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drone/Hitbox"]
 shape = SubResource("CircleShape2D_kwvme")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(229, 56)
+energy = 3.59
+texture = SubResource("GradientTexture2D_2ckju")
+texture_scale = 3.25
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ce1c1")

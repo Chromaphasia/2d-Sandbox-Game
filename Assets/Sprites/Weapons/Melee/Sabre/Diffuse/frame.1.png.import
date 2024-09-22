@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83vg7mahe0xe"
-path="res://.godot/imported/sword-slash-Sheet.png-4d2b387197a2ad88618931fa2b222ec3.ctex"
+uid="uid://w5xn5oepajw6"
+path="res://.godot/imported/frame.1.png-b94c7827090bbd56dcfbba3dbcb449b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/sword-slash-Sheet.png"
-dest_files=["res://.godot/imported/sword-slash-Sheet.png-4d2b387197a2ad88618931fa2b222ec3.ctex"]
+source_file="res://Assets/Sprites/Weapons/Melee/Sabre/Diffuse/frame.1.png"
+dest_files=["res://.godot/imported/frame.1.png-b94c7827090bbd56dcfbba3dbcb449b9.ctex"]
 
 [params]
 
