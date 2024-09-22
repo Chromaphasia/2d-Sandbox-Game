@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw5cqqgygbulg"]
+
+[ext_resource type="FontFile" uid="uid://bderwtidnwy5s" path="res://Assets/Fonts/dotty.ttf" id="1_i67w5"]
+[ext_resource type="Script" path="res://Scripts/Utility/damage_number.gd" id="2_iblbs"]
+
+[sub_resource type="Theme" id="Theme_3emm3"]
+default_font = ExtResource("1_i67w5")
+default_font_size = 47
+
+[node name="DamageNumber" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_3emm3")
+text = "Test"
+script = ExtResource("2_iblbs")
