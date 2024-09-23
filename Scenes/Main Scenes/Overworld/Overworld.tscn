@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b31e3tdnj8ifp"]
+[gd_scene load_steps=47 format=3 uid="uid://b31e3tdnj8ifp"]
 
 [ext_resource type="Texture2D" uid="uid://cfnk5a5pjystg" path="res://Assets/Sprites/robot-idle-Sheet.png" id="1_84fqq"]
 [ext_resource type="Script" path="res://Scripts/Player/playerCore.gd" id="1_l5jyn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://g1gugkpq282p" path="res://Assets/Sprites/droneDiffuse.png" id="7_5kytf"]
 [ext_resource type="Texture2D" uid="uid://vtetmuihwxy3" path="res://Assets/Sprites/Weapons/Melee/Sabre/sabre-normals.png" id="7_uxffi"]
 [ext_resource type="Texture2D" uid="uid://8nakfgjs3gbe" path="res://Assets/Sprites/Weapons/Melee/Sabre/sabre-diffuse.png" id="8_koj8h"]
+[ext_resource type="Texture2D" uid="uid://q4u86ujxtnhs" path="res://Assets/Sprites/droneNormal.png" id="10_xmt7s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_back7"]
 radius = 16.0
@@ -249,8 +250,8 @@ size = Vector2(20, 88)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g05he"]
 shader = ExtResource("5_fie7w")
-shader_parameter/GlowColor = Color(0.856494, 4e-06, 1e-06, 1)
-shader_parameter/Glow_Intensity = 0.0
+shader_parameter/GlowColor = Color(0.740942, 1, 0.689744, 1)
+shader_parameter/Glow_Intensity = 1.0
 shader_parameter/Glow_Mask = ExtResource("6_hojuj")
 shader_parameter/NormalMap = ExtResource("7_uxffi")
 
@@ -319,6 +320,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_t0lch"]
 radius = 16.45
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_fln2s"]
+diffuse_texture = ExtResource("7_5kytf")
+normal_texture = ExtResource("10_xmt7s")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w35fv"]
 radius = 20.0
 
@@ -350,11 +355,12 @@ polygon = PackedVector2Array(0, 112, 208, 112, 208, 40, 192, 40, 176, 80, 160, 9
 polygon = PackedVector2Array(-8, 40, -8, 112, 208, 112, 208, 40, 192, 40, 176, 80, 160, 96, 112, 104, 48, 104, 48, 80, 16, 80, 16, 40)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(192, 160)
+position = Vector2(67, 109)
 floor_snap_length = 5.9
 script = ExtResource("1_l5jyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(3, -1)
 shape = SubResource("CapsuleShape2D_back7")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -403,7 +409,7 @@ script = ExtResource("6_g4y17")
 shape = SubResource("CircleShape2D_t0lch")
 
 [node name="Sprite2D" type="Sprite2D" parent="Drone"]
-texture = ExtResource("7_5kytf")
+texture = SubResource("CanvasTexture_fln2s")
 
 [node name="Hurtbox" type="Area2D" parent="Drone"]
 script = ExtResource("4_u6woc")
